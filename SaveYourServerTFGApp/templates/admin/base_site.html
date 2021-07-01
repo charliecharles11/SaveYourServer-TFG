@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('SYS site admin') }}{% endblock %}
+
+{% block branding %}
+	<h1 id="site-name">
+		<a href="{% url 'admin:index' %}">
+			<img src="{% static '/admin/img/logotipo-tfgg.png' %}" height="50px"/>
+		</a>
+	</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

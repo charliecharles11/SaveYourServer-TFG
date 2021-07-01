@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="icon" href="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.ico">
+
+  <title>View Data | SYS Company</title>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer=""></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+	  
+  <meta name="robots" content="NONE,NOARCHIVE">
+
+  <link rel="stylesheet" type="text/css" href="/static/SaveYourServerTFGUsersApp/css/formato-index.css">
+
+  <style type="text/css">
+  	.password + .unmask {
+	  position: absolute;
+	  right: 74px;
+	  top: 12px;
+	  text-indent: -9999px;
+	  width: 25px;
+	  height: 25px;
+	  background: #aaa;
+	  border-radius: 50%;
+	  cursor:pointer;
+	  border: none;
+	  -webkit-appearance:none;
+	}
+	.password + .unmask:before {
+	  content: "";
+	  position:absolute;
+	  top:4px; left:4px;
+	  width: 17px;
+	  height: 17px;
+	  background: #e3e3e3;
+	  z-index:1;
+	  border-radius: 50%;
+	}
+	.password[type="text"] + .unmask:after {
+	  content: "";
+	  position:absolute;
+	  top:6px; left:6px;
+	  width: 13px;
+	  height: 13px;
+	  background: #aaa;
+	  z-index:2;
+	  border-radius: 50%;
+	}
+  </style>
+
+</head>
+
+
+<body class="dashboard" data-admin-utc-offset="0">
+	
+	<!-- Header -->
+  <div id="header" style="background-color: #002791">
+	<div id="branding">
+		
+	  <h1 id="site-name">
+		<a href="/">
+		  <img src="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.png" height="50px">
+		</a>
+	  </h1>
+
+	</div>
+		
+	<div id="user-tools">
+
+	  {% if request.user.is_authenticated %}
+	  Welcome,
+
+		  {% if request.user.is_admin %}
+			{% if request.user.is_systemadmin == 0 %}
+				<strong>{{user.dni}}</strong>.
+
+				<a href="/admin/" style="color: white;">View admin site</a>
+				/
+				<a href="{% url 'logout' %}" style="color: white;">Log out</a>
+		  
+			{% else %}
+
+				<strong>{{user.dni}}</strong>.
+
+				<a href="/admin/" style="color: white;">View system admin site</a>
+				/
+				<a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>
+				/
+				<a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+
+
+			{% endif %}
+
+		  {% else %}
+
+		  <a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>.
+
+		  <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+		  {% endif %}
+
+	  {% else %}
+
+	  <a href="/login/" style="color: white;">Login</a>
+	  &nbsp;&nbsp;
+	  <a href="/register/" style="color: white;">Sign up</a>
+
+	  {% endif %}
+
+
+	</div>
+
+  </div>
+	<!-- END Header -->
+
+  <br><br><br>
+
+  <div id="content">
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card card-body" style="width: 450px;
+				background: #002791;
+				position: relative;
+				left: 75%;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				padding: 40px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				border-radius: 6px;">
+				<h3 id="form-title" style="color: white; margin-left: 85px;">EDIT ACCOUNT</h3>
+				<br>
+				<form action="" method="POST" style="color: white;">
+					{% csrf_token %}
+					
+					<div class="input-group mb-3">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						&nbsp;&nbsp;{{form.full_name}}
+					</div>
+					<div class="input-group mb-3">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
+						</div>
+						&nbsp;&nbsp;{{form.dni}}
+					</div>
+					<div class="input-group mb-3">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+						</div>
+						&nbsp;&nbsp;{{form.email}}
+					</div>
+					<div class="input-group mb-3">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+						</div>
+						&nbsp;&nbsp;{{form.date_of_birth}}
+					</div>
+					<div class="input-group mb-3">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						&nbsp;&nbsp;{{form.password}}
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button class="unmask" type="button" title="Mask/Unmask password to check content" style="margin-top: 25px;">Mask</button>
+
+						<h6 style="margin-top:25px; margin-left:45px;">Steps to follow for password change:</h6>
+						<br>
+						<ul style="margin-left:45px;">
+							<li>Delete your old password.</li>
+							<li>Press the button to mask your password.</li>
+							<li>Enter your new password.</li>
+						</ul>
+					</div>
+
+					<input type="submit" name="Send" value="Send" style="margin-top: 5px; margin-left: 10px;">
+					<a class="btn btn-danger" href="{% url 'delete_user' user.id %}" style="color: white; width: 140px; margin-left: 135px;">Delete Account</a>
+				</form>
+
+				
+				
+			</div>
+		</div>
+	</div>
+
+  </div>
+
+  <br><br><br>
+
+  <section class="footer-top-section home-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-8 col-sm-12">
+				<div class="footer-widget about-widget">
+					<p><b style="color: #fff;">SAVE YOUR SERVER</b></p>
+					<p style="color: #fff">If you want to have efficient and safe productivity, this is your web.<br><br>We have a lot of experience in data analysis, and our objective is prevent malwares for your computer.</p>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-6" align="center">
+
+			</div>
+
+			<div class="col-lg-4 col-md-4 col-sm-12" align="right">
+				<div class="footer-widget">
+					<h6 class="fw-title">Save Your Server Ltd.</h6>
+					
+					<ul>
+						<li><a href="/who_are_we/" style="color: white;">Who are we?</a></li>
+						<li><a href="/how_it_works/">How it works?</a></li>
+						<li><a href="/privacity/" style="color: white;">Privacy policy</a></li>
+						<li><a href="/terms/" style="color: white;">Terms of use</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+  </section>
+
+  <footer class="page-footer mt-auto py-3 footer-section" style="background-color: #FFFFFF">
+  <h1 class="mb-4"></h1>
+  <div class="container">
+	  <p class="redes" style="color: #494949">You can follow us on:&nbsp; <a href="https://www.facebook.com/" target="_blank"><img
+					  src="/static/SaveYourServerTFGUsersApp/img/facebook.png" width="30"></a> &nbsp;·&nbsp; <a href="https://www.instagram.com/"
+																			 target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/instagram.png"
+																								  width="30"></a> &nbsp;·
+		  <a href="https://www.twitter.com/" target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/twitter.png" width="35"></a></p>
+	  <h1 class="mb-3"></h1>
+	  <p class="float-right"><a href="#" style="color: #494949">Go up</a></p>
+	  <p class="copyright" style="color: #494949">Copyright © 2021. All rights reserved</p>
+	  <h1 class="mb-4"></h1>
+	  <br/>
+  </div>
+  </footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="js/mdb.min.js" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		/* 
+		  Switch actions
+		*/
+		$('.unmask').on('click', function(){
+		  
+		  if($(this).prev('input').attr('type') == 'password')
+		    changeType($(this).prev('input'), 'text');
+		  
+		  else
+		    changeType($(this).prev('input'), 'password');
+		  
+		  return false;
+		});
+
+
+		/* 
+		  function from : https://gist.github.com/3559343
+		  Thank you bminer!
+		*/
+
+		function changeType(x, type) {
+		    if(x.prop('type') == type)
+		        return x; //That was easy.
+		    try {
+		        return x.prop('type', type); //Stupid IE security will not allow this
+		    } catch(e) {
+		        //Try re-creating the element (yep... this sucks)
+		        //jQuery has no html() method for the element, so we have to put into a div first
+		        var html = $("<div>").append(x.clone()).html();
+		        var regex = /type=(\")?([^\"\s]+)(\")?/; //matches type=text or type="text"
+		        //If no match, we add the type attribute to the end; otherwise, we replace
+		        var tmp = $(html.match(regex) == null ?
+		            html.replace(">", ' type="' + type + '">') :
+		            html.replace(regex, 'type="' + type + '"') );
+		        //Copy data from old element
+		        tmp.data('type', x.data('type') );
+		        var events = x.data('events');
+		        var cb = function(events) {
+		            return function() {
+		                //Bind all prior events
+		                for(i in events)
+		                {
+		                    var y = events[i];
+		                    for(j in y)
+		                        tmp.bind(i, y[j].handler);
+		                }
+		            }
+		        }(events);
+		        x.replaceWith(tmp);
+		        setTimeout(cb, 10); //Wait a bit to call function
+		        return tmp;
+		    }
+		}
+	</script>
+
+</body>
+</html>

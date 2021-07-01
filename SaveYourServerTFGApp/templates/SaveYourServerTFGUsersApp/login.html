@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="icon" href="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.ico">
+
+  <title>Login user | SYS Company</title>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer=""></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+      
+  <meta name="robots" content="NONE,NOARCHIVE">
+
+  <link rel="stylesheet" type="text/css" href="/static/SaveYourServerTFGUsersApp/css/formato-index.css">
+
+  <style>
+    .user_card {
+      width: 550px;
+      margin-top: auto;
+      margin-bottom: auto;
+      background: #002791;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 30px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 6px;
+
+    }
+
+    .form_container {
+      margin-top: 20px;
+    }
+
+    #form-title{
+      color: #fff;
+      
+    }
+
+    .login_btn {
+      width: 100%;
+      background: #494949 !important;
+      color: white !important;
+    }
+    .login_btn:focus {
+      box-shadow: none !important;
+      outline: 0px !important;
+    }
+    .login_container {
+      padding: 0 8rem;
+    }
+    .input-group-text {
+      background: #494949 !important;
+      color: white !important;
+      border: 0 !important;
+      border-radius: 0.25rem 0 0 0.25rem !important;
+    }
+    .input_user,
+    .input_pass:focus {
+      box-shadow: none !important;
+      outline: 0px !important;
+    }
+
+    #messages{
+      background-color: grey;
+      color: #fff;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+
+</head>
+
+
+<body class="dashboard" data-admin-utc-offset="0" style="background-color: white; color: white;">
+    
+    <!-- Header -->
+  <div id="header" style="background-color: #002791">
+    <div id="branding">
+        
+      <h1 id="site-name">
+        <a href="/">
+          <img src="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.png" height="50px">
+        </a>
+      </h1>
+
+    </div>
+        
+    <div id="user-tools">
+
+      <!--PONER AQUI SISTEMA DE NOTIFICACIONES AL USUARIO-->
+      <!--
+      <a href="/login/" style="color: white;">Login</a>
+      &nbsp;&nbsp;
+      <a href="/register/" style="color: white;">Sign up</a>
+      -->
+    </div>
+
+  </div>
+    <!-- END Header -->
+
+  <br><br><br>
+
+  <div id="content">
+    <div class="container h-100">
+      <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+          <div class="d-flex justify-content-center">
+
+
+            <h3 id="form-title">LOGIN</h3>
+          </div>
+          <div class="d-flex justify-content-center form_container">
+            <form method="POST" action="">
+              {% csrf_token %}
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-sort-numeric-down"></i></span>
+                </div>
+                <input type="text" name="dni" placeholder="Dni..." class="form-control">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                  <input type="password" name="password" placeholder="Password..." class="form-control" >
+              </div>
+
+                <div class="d-flex justify-content-center mt-3 login_container">
+                  <input class="btn login_btn" type="submit" value="Login">
+                  </div>
+            </form>
+
+          </div>
+
+          {% if messages != '' %}
+            {% for message in messages %}
+              <br>
+              <p id="messages">{{message}}</p>
+            {% endfor %}
+          {% endif %}
+      
+          <div class="mt-4">
+            <div class="d-flex justify-content-center links">
+              Don't have an account? &nbsp;<a href="{% url 'register' %}" class="ml-2" style="color: white;"> Sign Up</a>
+            </div>
+        
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br><br>
+
+  <section class="footer-top-section home-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 col-sm-12">
+                <div class="footer-widget about-widget">
+                    <p><b style="color: #fff;">SAVE YOUR SERVER</b></p>
+                    <p style="color: #fff">If you want to have efficient and safe productivity, this is your web.<br><br>We have a lot of experience in data analysis, and our objective is prevent malwares for your computer.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6" align="center">
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12" align="right">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Save Your Server Ltd.</h6>
+                    
+                    <ul>
+                        <li><a href="/who_are_we/" style="color: white;">Who are we?</a></li>
+                        <li><a href="/how_it_works/">How it works?</a></li>
+                        <li><a href="/privacity/" style="color: white;">Privacy policy</a></li>
+                        <li><a href="/terms/" style="color: white;">Terms of use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="page-footer mt-auto py-3 footer-section" style="background-color: #FFFFFF">
+  <h1 class="mb-4"></h1>
+  <div class="container">
+      <p class="redes" style="color: #494949">You can follow us on:&nbsp; <a href="https://www.facebook.com/" target="_blank"><img
+                      src="/static/SaveYourServerTFGUsersApp/img/facebook.png" width="30"></a> &nbsp;·&nbsp; <a href="https://www.instagram.com/"
+                                                                             target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/instagram.png"
+                                                                                                  width="30"></a> &nbsp;·
+          <a href="https://www.twitter.com/" target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/twitter.png" width="35"></a></p>
+      <h1 class="mb-3"></h1>
+      <p class="float-right"><a href="#" style="color: #494949">Go up</a></p>
+      <p class="copyright" style="color: #494949">Copyright © 2021. All rights reserved</p>
+      <h1 class="mb-4"></h1>
+      <br/>
+  </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/mdb.min.js" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

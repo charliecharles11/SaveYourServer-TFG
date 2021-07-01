@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="icon" href="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.ico">
+
+  <title>Privacy policy | SYS Company</title>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer=""></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+      
+  <meta name="robots" content="NONE,NOARCHIVE">
+
+  <link rel="stylesheet" type="text/css" href="/static/SaveYourServerTFGUsersApp/css/formato-index.css">
+
+</head>
+
+
+<body class="dashboard" data-admin-utc-offset="0">
+    
+    <!-- Header -->
+  <div id="header" style="background-color: #002791">
+  	<div id="branding">
+        
+      <h1 id="site-name">
+        <a href="/">
+          <img src="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.png" height="50px">
+        </a>
+      </h1>
+
+    </div>
+        
+    <div id="user-tools">
+
+      {% if request.user.is_authenticated %}
+      Welcome,
+
+          {% if request.user.is_admin %}
+            {% if request.user.is_systemadmin == 0 %}
+                <strong>{{user.dni}}</strong>.
+
+                <a href="/admin/" style="color: white;">View admin site</a>
+                /
+                <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+          
+            {% else %}
+
+                <strong>{{user.dni}}</strong>.
+
+                <a href="/admin/" style="color: white;">View system admin site</a>
+                /
+                <a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>
+                /
+                <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+
+
+            {% endif %}
+
+          {% else %}
+
+          <a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>.
+
+          <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+          {% endif %}
+
+      {% else %}
+
+      <a href="/login/" style="color: white;">Login</a>
+      &nbsp;&nbsp;
+      <a href="/register/" style="color: white;">Sign up</a>
+
+      {% endif %}
+
+
+    </div>
+
+  </div>
+    <!-- END Header -->
+
+
+  <div id="content">
+
+    <h1 style="text-align: center; color: #494949;">
+        <strong>Privacy Policy</strong>
+    </h1>
+
+    <hr/>
+    <br>
+
+    <p class="inf1">This Privacy Policy establishes the terms in which Save Your Server uses and protects the information that is provided by its users when using its website. This company is committed to the security of its users' data. When we ask you to fill in the fields of personal information with which you can be identified, we do so ensuring that it will only be used in accordance with the terms of this document. However, this Privacy Policy may change over time or be updated, so we recommend and emphasize that you continually review this page to ensure that you agree with such changes.</p>
+    <h1 class="mb-4"></h1>
+    
+    <p class="cabecera1" style="color: #494949"><strong>- INFORMATION THAT IS COLLECTED:</strong></p>
+    <p class="inf1">Our website may collect personal information such as: Name, your ID, your date of birth, contact information like your email address ...</p>
+    <h1 class="mb-4"></h1>
+
+    <p class="cabecera1" style="color: #494949"><strong>- USE OF THE INFORMATION COLLECTED:</strong></p>
+    <p class="inf1">Our website uses the information in order to provide the best possible service, particularly to maintain a registry of users, requests to the server if applicable, and improve our services. It is possible that notifications will be sent periodically through our site with information about the files uploaded to our website.</p>
+    <p class="inf1">Save Your Server is highly committed to fulfilling the commitment to keep your information safe. We use the most advanced systems and constantly update them to ensure that there is no unauthorized access.</p>
+    <h1 class="mb-4"></h1>
+    <br>
+
+    <section class="footer-top-section home-footer" >
+    <div class="container-fluid">
+
+        <div style="width:100%;height:0;padding-bottom:40%;position:relative;"><iframe src="https://giphy.com/embed/077i6AULCXc0FKTj9s" width="100%" height="100%" style="position:absolute;padding-bottom:5%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/computer-mograph-hack-077i6AULCXc0FKTj9s"></a></p>
+
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-sm-6" align="center">
+                
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6" align="right">
+            
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <br>
+    <h1 class="mb-4"></h1>
+
+    <p class="cabecera1" style="color: #494949"><strong>- COOKIES:</strong></p>
+    <p class="inf1">A cookie refers to a file that is sent in order to request permission to be stored on your computer, by accepting said file it is created and the cookie then serves to have information regarding web traffic, and also facilitates future visits to a web recurrent. Another function that cookies have is that with them the web can recognize you individually and therefore provide you with the best personalized service on its web.</p>
+    <p class="inf1">Our website uses cookies to be able to identify the pages that are visited and their frequency. This information is used only for statistical analysis and then the information is permanently deleted. You can delete cookies at any time from your computer. However, cookies help to provide a better service for websites, you do not give access to information from your computer or from you, unless you want it and provide it directly, visits to a website. You can accept or deny the use of cookies, however most browsers automatically accept cookies as it serves to have a better web service. You can also change your computer settings to decline cookies. If they are declined, you may not be able to use some of our services.</p>
+    <h1 class="mb-4"></h1>
+
+    <p class="cabecera1" style="color: #494949"><strong>- LINKS TO THIRD WEBS:</strong></p>
+    <p class="inf1">This website may contain links to other sites that may be of interest to you. Once you click on these links and leave our page, we no longer have control over the site to which you are redirected and therefore we are not responsible for the terms or privacy or the protection of your data on those other third party sites. These sites are subject to their own privacy policies, so it is recommended that you consult them to confirm that you agree with these.</p>
+    <h1 class="mb-4"></h1>
+
+    <p class="cabecera1" style="color: #494949"><strong>- CONTROL OF PERSONAL INFORMATION:</strong></p>
+    <p class="inf1">At any time you can restrict the collection or use of personal information that is provided to our website. Each time you are asked to fill in a form, such as user registration, you can check or uncheck the option to receive information by email. In case you have marked the option to receive our newsletter or advertising, you can cancel it at any time.</p>
+    <p class="inf1">This company will not sell, assign or distribute the personal information that is collected without your consent, unless required by a judge with a court order.</p>
+    <p class="inf1">Save Your Server Ltd. reserves the right to change the terms of this Privacy Policy at any time.</p>
+    <h1 class="mb-5"></h1>
+
+  </div>
+
+  <section class="footer-top-section home-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 col-sm-12">
+                <div class="footer-widget about-widget">
+                    <p><b style="color: #fff;">SAVE YOUR SERVER</b></p>
+                    <p style="color: #fff">If you want to have efficient and safe productivity, this is your web.<br><br>We have a lot of experience in data analysis, and our objective is prevent malwares for your computer.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6" align="center">
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12" align="right">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Save Your Server Ltd.</h6>
+                    
+                    <ul>
+                        <li><a href="/who_are_we/" style="color: white;">Who are we?</a></li>
+                        <li><a href="/how_it_works/">How it works?</a></li>
+                        <li><a href="/privacity/" style="color: white;">Privacy policy</a></li>
+                        <li><a href="/terms/" style="color: white;">Terms of use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="page-footer mt-auto py-3 footer-section" style="background-color: #FFFFFF">
+  <h1 class="mb-4"></h1>
+  <div class="container">
+      <p class="redes" style="color: #494949">You can follow us on:&nbsp; <a href="https://www.facebook.com/" target="_blank"><img
+                      src="/static/SaveYourServerTFGUsersApp/img/facebook.png" width="30"></a> &nbsp;·&nbsp; <a href="https://www.instagram.com/"
+                                                                             target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/instagram.png"
+                                                                                                  width="30"></a> &nbsp;·
+          <a href="https://www.twitter.com/" target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/twitter.png" width="35"></a></p>
+      <h1 class="mb-3"></h1>
+      <p class="float-right"><a href="#" style="color: #494949">Go up</a></p>
+      <p class="copyright" style="color: #494949">Copyright © 2021. All rights reserved</p>
+      <h1 class="mb-4"></h1>
+      <br/>
+  </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/mdb.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

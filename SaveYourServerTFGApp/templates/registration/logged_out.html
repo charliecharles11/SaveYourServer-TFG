@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% translate 'Home' %}</a></div>{% endblock %}
+
+{% block nav-sidebar %}{% endblock %}
+
+{% block content %}
+
+
+<p align="center"><h1>{% translate "Thanks for spending some time in the SYS Admin site today." %}</h1></p>
+
+<p><a href="{% url 'admin:index' %}">{% translate 'Login again in the SYS Admin site' %}</a> &nbsp;&nbsp;&nbsp; or &nbsp;&nbsp;&nbsp; <a href="/">View site</a></p>
+
+{% endblock %}

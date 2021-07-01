@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="icon" href="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.ico">
+
+  <title>Terms of use | SYS Company</title>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer=""></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+      
+  <meta name="robots" content="NONE,NOARCHIVE">
+
+  <link rel="stylesheet" type="text/css" href="/static/SaveYourServerTFGUsersApp/css/formato-index.css">
+
+</head>
+
+
+<body class="dashboard" data-admin-utc-offset="0">
+    
+    <!-- Header -->
+  <div id="header" style="background-color: #002791">
+  	<div id="branding">
+        
+      <h1 id="site-name">
+        <a href="/">
+          <img src="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.png" height="50px">
+        </a>
+      </h1>
+
+    </div>
+        
+    <div id="user-tools">
+
+      {% if request.user.is_authenticated %}
+      Welcome,
+
+          {% if request.user.is_admin %}
+            {% if request.user.is_systemadmin == 0 %}
+                <strong>{{user.dni}}</strong>.
+
+                <a href="/admin/" style="color: white;">View admin site</a>
+                /
+                <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+          
+            {% else %}
+
+                <strong>{{user.dni}}</strong>.
+
+                <a href="/admin/" style="color: white;">View system admin site</a>
+                /
+                <a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>
+                /
+                <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+
+
+            {% endif %}
+
+          {% else %}
+
+          <a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>.
+
+          <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+          {% endif %}
+
+      {% else %}
+
+      <a href="/login/" style="color: white;">Login</a>
+      &nbsp;&nbsp;
+      <a href="/register/" style="color: white;">Sign up</a>
+
+      {% endif %}
+
+
+    </div>
+
+  </div>
+    <!-- END Header -->
+
+
+  <div id="content">
+    <h1 class="mb-4"></h1>
+
+        <h1 style="text-align: center; color: #494949;">
+            <strong>Terms of use</strong>
+        </h1>
+        <h1 class="mb-4"></h1>
+        <hr/>
+
+        <h1 class="mb-5"></h1>
+
+
+        <p class="cabecera1" style="color: #494949"><strong>- RELEVANT INFORMATION:</strong></p>
+
+        <p class="inf1">It is a necessary requirement for the uploading of files to this site, that you read and accept the following Terms and Conditions that are written below. The use of our services as well as the analysis of your files will imply that you have read and accepted the Terms and Conditions of Use in this document. All files that are uploaded by a third website would be subject to its own Terms and Conditions. In some cases, to obtain a result after the expected analysis, it will be necessary to register by the user, with the entry of reliable personal data and definition of a password.</p>
+
+        <p class="inf1">The user can choose and change the password for his account administration access at any time, if he has registered and that is necessary for the analysis of any of our files. This company does not assume responsibility in the event that it gives said key to third parties.</p>                                                          
+        <p class="inf1">All file analyzes carried out through this website are subject to a confirmation and verification process, which may include verifying that it contains malware. In some cases, verification by email may be required.</p>
+        <p class="inf1">The files analyzed in this web service is valid only for this web site.</p>
+        <h1 class="mb-4"></h1>
+
+        <p class="cabecera1" style="color: #494949"><strong>- LICENSE:</strong></p>
+        <p class="inf1">Save Your Server Ltd. through its website grants a license for users to use the products that are sold on this website according to the Terms and Conditions described in this document.</p>
+        <h1 class="mb-4"></h1>
+        <br>
+
+        <section class="footer-top-section home-footer" style="width: auto; height: 610px;">
+            <div class="container-fluid">
+
+                <img src="/static/SaveYourServerTFGUsersApp/img/terms-1.png" class="mx-auto d-block">
+
+            </div>
+        </section>
+
+        <br>
+        <h1 class="mb-4"></h1>
+        <p class="cabecera1" style="color: #494949"><strong>- UNAUTHORIZED USE:</strong></p>
+        <p class="inf1">In case it applies (for the sale of software, templates, or other design and programming products) you cannot place one of our products, modified or unmodified, on a CD, website or any other means and offer them for redistribution or resale of any kind.</p>
+        <h1 class="mb-4"></h1>
+
+        <p class="cabecera1" style="color: #494949"><strong>- PROPERTY:</strong></p>
+        <p class="inf1">You cannot declare intellectual or exclusive property to any of our products, modified or unmodified. All products are the property of the content providers. Unless otherwise specified, our products are provided without warranty of any kind, express or implied. In no event will this company be liable for any damages including, but not limited to, direct, indirect, special, incidental or consequential damages or other losses resulting from the use or inability to use our products.</p>
+        <h1 class="mb-4"></h1>
+
+        <p class="cabecera1" style="color: #494949"><strong>- PRIVACY:</strong></p>
+        <p class="inf1">This website guarantees that the personal information you send has the necessary security. The data entered by the user or in the case of requiring a validation of the analysis of the file by the user will not be delivered to third parties, unless it must be disclosed in compliance with a court order or legal requirements.</p>
+        <p class="inf1">Save You Server Ltd. reserves the rights to change or modify these terms without prior notice..</p>
+        <h1 class="mb-5"></h1>
+
+  </div>
+
+  <br>
+
+  <section class="footer-top-section home-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 col-sm-12">
+                <div class="footer-widget about-widget">
+                    <p><b style="color: #fff;">SAVE YOUR SERVER</b></p>
+                    <p style="color: #fff">If you want to have efficient and safe productivity, this is your web.<br><br>We have a lot of experience in data analysis, and our objective is prevent malwares for your computer.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6" align="center">
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12" align="right">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Save Your Server Ltd.</h6>
+                    
+                    <ul>
+                        <li><a href="/who_are_we/" style="color: white;">Who are we?</a></li>
+                        <li><a href="/how_it_works/">How it works?</a></li>
+                        <li><a href="/privacity/" style="color: white;">Privacy policy</a></li>
+                        <li><a href="/terms/" style="color: white;">Terms of use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="page-footer mt-auto py-3 footer-section" style="background-color: #FFFFFF">
+  <h1 class="mb-4"></h1>
+  <div class="container">
+      <p class="redes" style="color: #494949">You can follow us on:&nbsp; <a href="https://www.facebook.com/" target="_blank"><img
+                      src="/static/SaveYourServerTFGUsersApp/img/facebook.png" width="30"></a> &nbsp;·&nbsp; <a href="https://www.instagram.com/"
+                                                                             target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/instagram.png"
+                                                                                                  width="30"></a> &nbsp;·
+          <a href="https://www.twitter.com/" target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/twitter.png" width="35"></a></p>
+      <h1 class="mb-3"></h1>
+      <p class="float-right"><a href="#" style="color: #494949">Go up</a></p>
+      <p class="copyright" style="color: #494949">Copyright © 2021. All rights reserved</p>
+      <h1 class="mb-4"></h1>
+      <br/>
+  </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/mdb.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

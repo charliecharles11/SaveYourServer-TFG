@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="icon" href="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.ico">
+
+  <title>How it works? | SYS Company</title>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer=""></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+      
+  <meta name="robots" content="NONE,NOARCHIVE">
+
+  <link rel="stylesheet" type="text/css" href="/static/SaveYourServerTFGUsersApp/css/formato-index.css">
+
+</head>
+
+
+<body class="dashboard" data-admin-utc-offset="0">
+    
+    <!-- Header -->
+  <div id="header" style="background-color: #002791">
+  	<div id="branding">
+        
+      <h1 id="site-name">
+        <a href="/">
+          <img src="/static/SaveYourServerTFGUsersApp/img/logotipo-tfg.png" height="50px">
+        </a>
+      </h1>
+
+    </div>
+        
+    <div id="user-tools">
+
+      {% if request.user.is_authenticated %}
+      Welcome,
+
+          {% if request.user.is_admin %}
+            {% if request.user.is_systemadmin == 0 %}
+                <strong>{{user.dni}}</strong>.
+
+                <a href="/admin/" style="color: white;">View admin site</a>
+                /
+                <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+          
+            {% else %}
+
+                <strong>{{user.dni}}</strong>.
+
+                <a href="/admin/" style="color: white;">View system admin site</a>
+                /
+                <a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>
+                /
+                <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+
+
+            {% endif %}
+
+          {% else %}
+
+          <a href="{% url 'view_data' user.id %}" style="color: white;"> <strong>{{user.dni}}</strong></a>.
+
+          <a href="{% url 'logout' %}" style="color: white;">Log out</a>
+
+          {% endif %}
+
+      {% else %}
+
+      <a href="/login/" style="color: white;">Login</a>
+      &nbsp;&nbsp;
+      <a href="/register/" style="color: white;">Sign up</a>
+
+      {% endif %}
+
+
+    </div>
+
+  </div>
+    <!-- END Header -->
+
+
+  <div id="content">
+
+    <h1 style="text-align: center; color: #494949;">
+        <strong>How it works?</strong>
+    </h1>
+
+    <hr/>
+    <br>
+
+    <p class="inf1">In the Save Your Server webpage, any user can select a file from their computer using their browser and send it to the mentioned page. Save Your Server offers a number of file submission methods, including the primary public web interface, desktop uploaders, browser extensions and a programmatic API. The web interface has the highest scanning priority among the publicly available submission methods. Submissions may be scripted in any programming language using the HTTP-based public API.</p>
+
+	<p class="inf1">As with files can be submitted via several different means including the Save Your Server webpage, browser extensions and the API.</p>
+
+	<p class="inf1">Upon submitting a file or URL basic results are shared with the submitter, and also between the examining partners, who use results to improve their own systems. As a result, by submitting files to Save Your Server you are contributing to raise the global IT security level.</p>
+
+	<p class="inf1">This core analysis is also the basis for several other features, including the Save Your Server Community: a network that allows users to comment on files and URLs and share notes with each other. Save Your Server can be useful in detecting malicious content and also in identifying false positives -- normal and harmless items detected as malicious by one or more scanners.</p>
+    <h1 class="mb-4"></h1>
+    
+    <p class="cabecera1" style="color: #494949"><strong>- FREE AND UNBIASED:</strong></p>
+    <p class="inf1">Save Your Server is free to end users for non-commercial use in accordance with our Terms of Service. Though we work with engines belonging to many different organizations, Save Your Server does not distribute or promote any of those third-party engines. We simply act as an aggregator of information. This allows us to offer an objective and unbiased service to our users.</p>
+    <h1 class="mb-4"></h1>
+
+    <p class="cabecera1" style="color: #494949"><strong>- MANY CONTRIBUTORS:</strong></p>
+    <p class="inf1">Save Your Server's aggregated data is the output of many different file analysis tools, and user contributions. The file characterization tools we aggregate cover a wide range of purposes: heuristic engines, known-bad signatures, metadata extraction, identification of malicious signals, etc.</p>
+    <h1 class="mb-4"></h1>
+
+    <p class="cabecera1" style="color: #494949"><strong>- RAISING THE GLOBAL IT SECURITY LEVEL THROUGH SHARING:</strong></p>
+    <p class="inf1">Scanning reports produced by Save Your Server are shared with the public Save Your Server community. Users can contribute comments and vote on whether particular content is harmful. In this way, users help to deepen the community’s collective understanding of potentially harmful content and identify false positives (i.e. harmless items detected as malicious by one or more scanners).</p>
+
+    <p class="inf1">The contents of submitted files or pages may also be shared with premium Save Your Server customers. The file corpus created in Save Your Server provides cybersecurity professionals and security product developers valuable insights into the behaviors of emerging cyber threats and malware. Through our premium services commercial offering, Save Your Server provides qualified customers and anti-virus partners with tools to perform complex criteria-based searches to identify and access harmful files samples for further study. This helps organizations discover and analyze new threats and fashion new mitigations and defenses.</p>
+    <h1 class="mb-4"></h1>
+
+    <p class="cabecera1" style="color: #494949"><strong>- DETAILED RESULTS:</strong></p>
+    <p class="inf1">Save Your Server not only tells you whether a given antivirus solution detected a submitted file as malicious, but also displays each engine's detection label (e.g., I-Worm.Allaple.gen).</p>
+
+    <h1 class="mb-5"></h1>
+
+  </div>
+
+  <section class="footer-top-section home-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 col-sm-12">
+                <div class="footer-widget about-widget">
+                    <p><b style="color: #fff;">SAVE YOUR SERVER</b></p>
+                    <p style="color: #fff">If you want to have efficient and safe productivity, this is your web.<br><br>We have a lot of experience in data analysis, and our objective is prevent malwares for your computer.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6" align="center">
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12" align="right">
+                <div class="footer-widget">
+                    <h6 class="fw-title">Save Your Server Ltd.</h6>
+                    
+                    <ul>
+                        <li><a href="/who_are_we/" style="color: white;">Who are we?</a></li>
+                        <li><a href="/how_it_works/">How it works?</a></li>
+                        <li><a href="/privacity/" style="color: white;">Privacy policy</a></li>
+                        <li><a href="/terms/" style="color: white;">Terms of use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <footer class="page-footer mt-auto py-3 footer-section" style="background-color: #FFFFFF">
+  <h1 class="mb-4"></h1>
+  <div class="container">
+      <p class="redes" style="color: #494949">You can follow us on:&nbsp; <a href="https://www.facebook.com/" target="_blank"><img
+                      src="/static/SaveYourServerTFGUsersApp/img/facebook.png" width="30"></a> &nbsp;·&nbsp; <a href="https://www.instagram.com/"
+                                                                             target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/instagram.png"
+                                                                                                  width="30"></a> &nbsp;·
+          <a href="https://www.twitter.com/" target="_blank"><img src="/static/SaveYourServerTFGUsersApp/img/twitter.png" width="35"></a></p>
+      <h1 class="mb-3"></h1>
+      <p class="float-right"><a href="#" style="color: #494949">Go up</a></p>
+      <p class="copyright" style="color: #494949">Copyright © 2021. All rights reserved</p>
+      <h1 class="mb-4"></h1>
+      <br/>
+  </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/mdb.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
