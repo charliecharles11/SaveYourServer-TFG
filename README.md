@@ -7,14 +7,13 @@ El contenido del repositorio contiene en su totalidad el proyecto de final de ca
 
 ## Proceso de instalación
 Una vez sea descargado el proyecto, tenemos que crear tanto las migraciones como asignarlas para poder trabajar con ellas.
-
-To install and run this proyect just type and execute
 ```bash
-npm install
+python manage.py makemigrations SaveYourServerTFGApp
 ```
-//python manage.py makemigrations SaveYourServerTFGApp
 
-//python manage.py migrate
+```bash
+python manage.py migrate
+```
 
 ## Desarrollador 🚀
 * [charliecharles11](https://github.com/charliecharles11/) - Carlos Díaz Gil.
