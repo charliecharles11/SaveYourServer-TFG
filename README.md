@@ -11,8 +11,8 @@ Este es el repositorio donde se encuentra mi trabajo de final de grado de Ingeni
 
 Una vez sea descargado el proyecto, tenemos que crear tanto las migraciones como asignarlas para poder trabajar con ellas.
 
-// python manage.py makemigrations SaveYourServerTFGApp
+//python manage.py makemigrations SaveYourServerTFGApp
 
-// python manage.py migrate
+//python manage.py migrate
 
 
