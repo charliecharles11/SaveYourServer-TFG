@@ -15,5 +15,10 @@ python manage.py makemigrations SaveYourServerTFGApp
 python manage.py migrate
 ```
 
+Finalmente, procedemos a iniciar el servidor de Django
+```bash
+python manage.py runserver 8080
+```
+
 ## Desarrollador 🚀
 * [charliecharles11](https://github.com/charliecharles11/) - Carlos Díaz Gil.
